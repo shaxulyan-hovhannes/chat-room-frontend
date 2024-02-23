@@ -1,10 +1,14 @@
 import { FC } from "react";
+
 import SuspenseLayer from "components/suspense-layer/SuspenseLayer";
+import Layout from "layout";
 
 const ChatRoomPage: FC = () => {
   return (
     <SuspenseLayer>
-      <div>ChatRoomPage</div>
+      <Layout>
+        <div style={{ border: "1px solid red" }}>ChatRoomPage</div>
+      </Layout>
     </SuspenseLayer>
   );
 };

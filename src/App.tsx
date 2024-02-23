@@ -41,7 +41,7 @@ function App() {
 
   return (
     <>
-      <div>
+      {/* <div>
         <h1>Chat Room</h1>
         {!isConnected ? (
           <div>Connecting to server...</div>
@@ -78,7 +78,7 @@ function App() {
         >
           JOIN
         </button>
-      </div>
+      </div> */}
       <RoutesWrapper />
     </>
   );

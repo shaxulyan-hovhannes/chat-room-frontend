@@ -1,7 +1,5 @@
 import { ComponentType, lazy } from "react";
 
-// import HomePage from "pages/home-page";
-// import ChatRoomPage from "pages/chat-room-page";
 const HomePage = lazy(() => import("pages/home-page"));
 const ChatRoomPage = lazy(() => import("pages/chat-room-page"));
 
@@ -16,7 +14,7 @@ export interface IRoute {
 }
 
 export const publicRoutes: IRoute[] = [
-  { path: Paths.HOME, Component: ChatRoomPage },
+  { path: Paths.HOME, Component: HomePage },
 ];
 
 export const authRoutes: IRoute[] = [

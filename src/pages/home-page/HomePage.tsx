@@ -1,12 +1,20 @@
 import { FC } from "react";
 
-import SuspenseLayer from "components/suspense-layer";
+import { Container } from "@mui/material";
+import SigninForm from "components/signin-form/SigninForm";
 
 const HomePage: FC = () => {
   return (
-    <SuspenseLayer>
-      <div>HomePage</div>
-    </SuspenseLayer>
+    <Container
+      sx={{
+        width: "40%",
+        minWidth: "400px",
+        paddingTop: "40px",
+        textAlign: "center",
+      }}
+    >
+      <SigninForm />
+    </Container>
   );
 };
 
