@@ -1,0 +1,26 @@
+.itemRoot {
+  cursor: pointer;
+  padding: 10px 0 10px 20px;
+  transition: 0.15s;
+
+  &:not(&:last-child) {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+  }
+
+  &:hover {
+    background-color: var(--gray-color-1);
+  }
+
+  &:active {
+    background-color: var(--gray-color-2);
+  }
+}
+
+.selected {
+  background-color: var(--gray-color-2);
+}
+
+.name {
+  font-size: 1rem;
+  font-weight: 500;
+}

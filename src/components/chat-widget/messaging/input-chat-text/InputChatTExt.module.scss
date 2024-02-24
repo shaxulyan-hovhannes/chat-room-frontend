@@ -1,0 +1,21 @@
+.inputChatTextRoot {
+  width: 70%;
+  min-width: 100px;
+  position: absolute;
+  //   left: 0;
+  //   top: 100px;
+  inset-block-start: 83vh;
+  inset-inline-start: 0;
+  background-color: var(--gray-color-1);
+  left: 16%;
+}
+
+.input_chat_text {
+  width: 100%;
+}
+
+.sendMessageIcon {
+  width: 35px;
+  height: auto;
+  cursor: pointer;
+}

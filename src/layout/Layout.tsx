@@ -1,11 +1,11 @@
 import { FC, PropsWithChildren } from "react";
-import { Container } from "@mui/material";
+import styles from "./Layout.module.scss";
 
 const Layout: FC<PropsWithChildren> = ({ children }) => {
   return (
     <>
-      <div style={{ border: "1px solid blue" }}>Header</div>
-      <Container component="main">{children}</Container>
+      <div className={styles.layoutHeaderBlock}>Header</div>
+      <div>{children}</div>
     </>
   );
 };

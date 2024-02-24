@@ -1,7 +1,7 @@
-import { ComponentType, lazy } from "react";
+import { ComponentType } from "react";
 
-const HomePage = lazy(() => import("pages/home-page"));
-const ChatRoomPage = lazy(() => import("pages/chat-room-page"));
+import HomePage from "pages/home-page";
+import ChatRoomPage from "pages/chat-room-page";
 
 export enum Paths {
   HOME = "/",

@@ -1,0 +1,14 @@
+.chatWidgetRoot {
+  height: calc(100vh - 55px);
+  overflow-y: auto;
+}
+
+.leftBlock {
+  border: 1px solid var(--gray-color-3);
+}
+
+.rightBlock {
+  position: relative;
+  max-height: 100%;
+  border: 1px solid var(--gray-color-3);
+}

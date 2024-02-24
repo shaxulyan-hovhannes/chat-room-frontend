@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import "./App.scss";
 
+import ChatProvider from "components/chat-provider";
 import RoutesWrapper from "components/routing/routes-wrapper/RoutesWrapper";
 
 import io from "socket.io-client";
+import socketService from "services/socketService";
+import { IUser } from "models/user";
 
-const socket = io("http://localhost:3001");
+// const socket = io("http://localhost:3001");
 
 function App() {
   const [messages, setMessages] = useState([]);
@@ -13,31 +15,27 @@ function App() {
   const [username, setUsername] = useState("");
   const [isConnected, setIsConnected] = useState(false);
 
-  useEffect(() => {
-    socket.on("connect", () => {
-      setIsConnected(true);
-    });
-    socket.on("message", (message) => {
-      console.log("SOCKET MESSAGE", message);
-      setMessages((prevMessages): any => [...prevMessages, message]);
-    });
+  // useEffect(() => {
+  //   socket.on("connect", () => {
+  //     setIsConnected(true);
+  //   });
+  //   socket.on("message", (message) => {
+  //     console.log("SOCKET MESSAGE", message);
+  //     setMessages((prevMessages): any => [...prevMessages, message]);
+  //   });
 
-    return () => {
-      // socket.disconnect();
-    };
-  }, []);
+  //   return () => {
+  //     // socket.disconnect();
+  //   };
+  // }, []);
 
-  useEffect(() => {
-    console.log("messages", messages);
-  }, [messages]);
-
-  const handleSendMessage = () => {
-    if (messageInput.trim() !== "") {
-      const message = `${username}: ${messageInput}`;
-      socket.emit("message", message);
-      setMessageInput("");
-    }
-  };
+  // const handleSendMessage = () => {
+  //   if (messageInput.trim() !== "") {
+  //     const message = `${username}: ${messageInput}`;
+  //     socket.emit("message", message);
+  //     setMessageInput("");
+  //   }
+  // };
 
   return (
     <>
@@ -79,7 +77,9 @@ function App() {
           JOIN
         </button>
       </div> */}
-      <RoutesWrapper />
+      <ChatProvider>
+        <RoutesWrapper />
+      </ChatProvider>
     </>
   );
 }
