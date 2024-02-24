@@ -2,7 +2,6 @@ import React, { FC, useState, useEffect } from "react";
 import styles from "./Messaging.module.scss";
 
 import { IUser } from "models/user";
-import { IMessage } from "models/message";
 
 import MessageItem from "./message-item/MessageItem";
 import localStorageService from "services/localStorageService";
@@ -16,8 +15,6 @@ interface MessagingProps {
 const Messaging: FC<MessagingProps> = ({ selectedUser }) => {
   const [messages, setMessages] = useState<any[]>([]);
   const { users } = useChatContext();
-
-  console.log("MESSAGES", messages);
 
   useEffect(() => {
     const chatHistory = localStorageService.getItem<{ [key: string]: any }>(

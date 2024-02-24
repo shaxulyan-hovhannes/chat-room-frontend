@@ -52,8 +52,6 @@ const useChat = () => {
         setSelectedUser({ id: message.sender_id });
       }
 
-      console.log("userWithWhoChatting", { userWithWhoChatting, message });
-
       if (chatHistory[userWithWhoChatting]) {
         chatHistory[userWithWhoChatting][message.timestamp] = message;
       }
