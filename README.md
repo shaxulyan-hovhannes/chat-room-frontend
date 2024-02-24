@@ -17,7 +17,7 @@ To install packages, open the terminal, and run command npm i
 ## Run the app
 
 Then run the app with command npm start
-PS. For more details please explore the instructions described under
+P.S. For more details please explore the instructions described under
 
 <!-- -------------------------------------------------------------------------------------------------------------- -->
 
