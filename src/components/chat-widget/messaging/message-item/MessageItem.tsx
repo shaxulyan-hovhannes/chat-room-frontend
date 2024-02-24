@@ -30,7 +30,7 @@ const MessageItem: FC<MessageItemProps> = ({
       <div>
         <p className={styles.contentBlock}>{content}</p>
         <p className={styles.timestampBlock}>
-          {dayjs(timestamp).format("YY-MM-DD HH:mm:ss")}
+          {dayjs(timestamp).format("YY-MM-DD | HH:mm:ss")}
         </p>
       </div>
     </div>
