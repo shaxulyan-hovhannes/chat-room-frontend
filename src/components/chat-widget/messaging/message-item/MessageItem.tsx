@@ -1,7 +1,7 @@
 import { FC } from "react";
 import styles from "./MessageItem.module.scss";
+import dayjs from "dayjs";
 
-import localStorageService from "services/localStorageService";
 import { IUser } from "models/user";
 
 interface MessageItemProps {
@@ -27,7 +27,12 @@ const MessageItem: FC<MessageItemProps> = ({
         "id" in selectedUser && sender_id !== selectedUser.id ? styles.sent : ""
       }`}
     >
-      <p className={styles.contentBlock}>{content}</p>
+      <div>
+        <p className={styles.contentBlock}>{content}</p>
+        <p className={styles.timestampBlock}>
+          {dayjs(timestamp).format("YY-MM-DD HH:mm:ss")}
+        </p>
+      </div>
     </div>
   );
 };
