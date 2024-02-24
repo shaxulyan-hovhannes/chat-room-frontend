@@ -7,10 +7,7 @@ import { AddUserDto } from "models/user";
 
 class SocketService {
   private readonly socket: Socket<ServerToClientEvents, ClientToServerEvents> =
-    // io(config.socketUrl, {
-    //   autoConnect: false,
-    // });
-    io("http://localhost:3001", {
+    io(config.socketUrl || "", {
       autoConnect: false,
     });
 

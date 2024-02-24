@@ -1,0 +1,15 @@
+.messageItemRoot {
+  margin-bottom: 10px;
+  display: flex;
+}
+
+.contentBlock {
+  width: max-content;
+  padding: 10px;
+  background-color: var(--gray-color-1);
+  border-radius: 5px;
+}
+
+.sent {
+  justify-content: right;
+}

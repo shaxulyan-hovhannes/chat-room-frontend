@@ -9,7 +9,6 @@ import {
 } from "../validation/signinValidation";
 
 import { Paths } from "routes";
-import { IUser } from "models/user";
 
 import localStorageService from "services/localStorageService";
 import socketService from "services/socketService";
@@ -21,7 +20,7 @@ export const useSigninForm = () => {
     mode: "onBlur",
     resolver: yupResolver(signinValidationSchema),
     defaultValues: {
-      name: "Hovo",
+      name: "",
     },
   });
 

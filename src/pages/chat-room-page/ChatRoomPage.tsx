@@ -1,11 +1,7 @@
-import { FC, useEffect, useState } from "react";
+import { FC } from "react";
 
 import Layout from "layout";
 import ChatWidget from "components/chat-widget";
-
-import socketService from "services/socketService";
-import localStorageService from "services/localStorageService";
-import { IUser } from "models/user";
 
 import { useChatContext } from "components/chat-provider/ChatProvider";
 

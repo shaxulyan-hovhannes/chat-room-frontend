@@ -47,6 +47,7 @@ const ChatWidget: FC<ChatWidgetProps> = ({
               });
             }
           }}
+          disabled={!(selectedUser && "id" in selectedUser)}
         />
       </Grid>
     </Grid>

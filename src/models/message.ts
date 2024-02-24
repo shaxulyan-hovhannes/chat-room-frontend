@@ -1,5 +1,3 @@
-import { IUser } from "./user";
-
 export interface IMessage {
   id: number;
   sender_id: string;

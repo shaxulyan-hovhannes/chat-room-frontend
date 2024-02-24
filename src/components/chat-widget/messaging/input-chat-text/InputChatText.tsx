@@ -7,15 +7,16 @@ import { ReactComponent as SendMessageIcon } from "assets/icons/send_message.svg
 
 interface InputChatTextProps {
   onSend: (message: string) => void;
+  disabled: boolean;
 }
 
-const InputChatText: FC<InputChatTextProps> = ({ onSend }) => {
+const InputChatText: FC<InputChatTextProps> = ({ onSend, disabled }) => {
   const [message, setMessage] = useState("");
 
   return (
     <div className={styles.inputChatTextRoot}>
       <TextField
-        placeholder="Type a message"
+        placeholder={disabled ? "Nobody in the chat" : "Type a message"}
         className={styles.input_chat_text}
         multiline
         rows={2}
@@ -24,14 +25,17 @@ const InputChatText: FC<InputChatTextProps> = ({ onSend }) => {
           endAdornment: (
             <SendMessageIcon
               onClick={() => {
-                onSend(message);
-                setMessage("");
+                if (message) {
+                  onSend(message);
+                  setMessage("");
+                }
               }}
               className={styles.sendMessageIcon}
             />
           ),
         }}
         onChange={({ target }) => setMessage(target.value)}
+        disabled={disabled}
       />
     </div>
   );

@@ -1,6 +1,25 @@
 # Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<!-- ------------------------------ !!!Important  ------------------------------------------------------- -->
+
+## Create .env file locally
+
+!!!Important
+At first please add .env file with the following content:
+REACT_APP_API_SOCKET_URL=http://localhost:3001
+
+Without it ht e app won't be work correctly.
+
+## Install packages with npm i
+
+To install packages, open the terminal, and run command <<npm i>>
+
+## Run the app
+
+Then run the app with command <<npm start>>
+PS. For more details please explore the instructions described under
+
+<!-- -------------------------------------------------------------------------------------------------------------- -->
 
 ## Available Scripts
 

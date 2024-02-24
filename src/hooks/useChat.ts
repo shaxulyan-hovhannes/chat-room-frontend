@@ -14,71 +14,90 @@ const useChat = () => {
   };
 
   useEffect(() => {
+    let chatHistory: any = localStorageService.getItem("chat_history");
+
+    if (!chatHistory) {
+      localStorageService.setItem("chat_history", JSON.stringify({}));
+      chatHistory = {};
+    }
+
     socketService.connect();
 
-    const userInfo = localStorageService.getItem<IUser>("user_info");
-
     socketService.join("users");
+    // Connect and join to socket without authentication isn't correct
+    // ADD-TO-DO need to implement auth service
 
-    if (userInfo) {
-      const chatHistory: any = localStorageService.getItem("chat_history");
-
-      if (!chatHistory) {
-        localStorageService.setItem("chat_history", JSON.stringify({}));
+    socketService.subscribeToCreatedUsers(({ id, name }: IUser) => {
+      if (!userInfo || id !== userInfo.id) {
+        chatHistory[id] = {
+          id,
+          name,
+        };
       }
+
+      localStorageService.setItem("chat_history", JSON.stringify(chatHistory));
 
       const users = Object.values(chatHistory);
 
-      socketService.subscribeToCreatedUsers(({ id, name }: IUser) => {
-        if (id !== userInfo.id) {
-          chatHistory[id] = {
-            id,
-            name,
-          };
-        }
+      setUsers(users);
+    });
 
-        localStorageService.setItem(
-          "chat_history",
-          JSON.stringify(chatHistory)
-        );
+    socketService.subscribeToMessages((message) => {
+      const userInfo = localStorageService.getItem<IUser>("user_info");
 
-        const users = Object.values(chatHistory);
+      let userWithWhoChatting = message.receiver_id;
 
-        setUsers(users);
-      });
+      if (userInfo && message.sender_id !== userInfo.id) {
+        userWithWhoChatting = message.sender_id;
+        setSelectedUser({ id: message.sender_id });
+      }
 
+      console.log("userWithWhoChatting", { userWithWhoChatting, message });
+
+      if (chatHistory[userWithWhoChatting]) {
+        chatHistory[userWithWhoChatting][message.timestamp] = message;
+      }
+
+      localStorageService.setItem("chat_history", JSON.stringify(chatHistory));
+
+      const users = Object.values(chatHistory);
+
+      setUsers(users);
+    });
+
+    const users = Object.values(chatHistory);
+
+    if (users.length) {
       setUsers(users);
 
       if (users[0]) {
         setSelectedUser(users[0]);
       }
+    }
 
-      socketService.subscribeToMessages((message) => {
-        if (message.sender_id !== userInfo.id) {
-          console.log("MESSAGE CHAT HISTORY", chatHistory);
-          chatHistory[message.sender_id][message.timestamp] = message;
-        } else {
-          chatHistory[message.receiver_id][message.timestamp] = message;
-        }
+    const userInfo = localStorageService.getItem<IUser>("user_info");
 
-        localStorageService.setItem(
-          "chat_history",
-          JSON.stringify(chatHistory)
-        );
-
-        const users = Object.values(chatHistory);
-
-        setUsers(users);
-      });
-
+    if (userInfo) {
       socketService.join(userInfo.id);
     }
-    // ADD-TO-DO need to refactoring
 
     return () => {
       socketService.disconnect();
     };
   }, []);
+  // ADD-TO-DO need to refactoring
+
+  //   useEffect(() => {
+  //     if (users.length) {
+  //       setUsers(users);
+
+  //       if (users[0]) {
+  //         setSelectedUser(users[0]);
+  //       }
+  //     }
+  //   }, [users]);
+
+  useEffect(() => {}, [selectedUser]);
 
   return {
     users,
