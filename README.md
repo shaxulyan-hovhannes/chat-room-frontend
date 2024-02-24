@@ -12,11 +12,11 @@ Without it the app won't be work correctly.
 
 ## Install packages with npm i
 
-To install packages, open the terminal, and run command <npm i>
+To install packages, open the terminal, and run command npm i
 
 ## Run the app
 
-Then run the app with command <npm start>
+Then run the app with command npm start
 PS. For more details please explore the instructions described under
 
 <!-- -------------------------------------------------------------------------------------------------------------- -->
